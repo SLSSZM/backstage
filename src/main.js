@@ -10,6 +10,12 @@ Vue.prototype.$http = axios.create({
   baseURL: 'http://localhost:3000/api'
 })
 
+Vue.prototype.$http.interceptors.request.use(config => {
+  const token = window.sessionStorage.getItem('token');
+  config.headers.Authorization = token;
+  return config;
+})
+
 new Vue({
   router,
   render: h => h(App)

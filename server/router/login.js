@@ -16,8 +16,6 @@ loginRouter.post('/api/login', async (req, res) => {
       }else{
         if(isOk){
           let token = jwtToken.generateToken({username});
-          token = 'Bearer ' + token;
-          console.log(token);
           res.send({data: {username, token}, meta:{msg: '登录成功', status: 200}});
         }else{
           res.send({data: user[0].username, meta:{msg: '密码错误', status: 400}});
