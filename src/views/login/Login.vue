@@ -2,7 +2,7 @@
   <div class="login">
     <div class="login-item">
       <div class="login-avatar">
-        <img src="../../assets/images/login.png" alt="avatar">
+        <img src="../../assets/images/login.svg" alt="avatar">
       </div>
       <!-- 表单 -->
       <el-form ref="loginFormRef" class="login-form" :rules="loginFormRules" :model="loginForm">
@@ -57,6 +57,7 @@ export default {
     resetLoginForm() {
       this.$refs.loginFormRef.resetFields();
     },
+    //登录网络请求
     login() {
       this.$refs.loginFormRef.validate(async valid => {
         if(!valid) return;
@@ -123,7 +124,6 @@ export default {
 }
 
 .login-avatar img {
-  height: 100%;
-  border-radius: 50%;
+  height: 92%;
 }
 </style>

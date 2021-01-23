@@ -7,6 +7,16 @@ const User = mongoose.model('User', new mongoose.Schema({
   },
   password: {
     type: String
+  },
+  email: {
+    type: String
+  },
+  mobile: {
+    type: Number
+  },
+  roleName: {
+    type: String,
+    default: 'root'
   }
 }));
 

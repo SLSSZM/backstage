@@ -9,6 +9,7 @@ Vue.config.productionTip = false
 Vue.prototype.$http = axios.create({
   baseURL: 'http://localhost:3000/api'
 })
+Vue.prototype.$http.defaults.timeout = 50000;
 
 Vue.prototype.$http.interceptors.request.use(config => {
   const token = window.sessionStorage.getItem('token');
