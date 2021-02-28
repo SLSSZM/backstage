@@ -5,7 +5,7 @@ const path = require('path')
 const jwtToken = {
   //生成token
   generateToken(data) {
-    let cert = fs.readFileSync(path.join(__dirname, './ras/private_key.pem'));
+    let cert = fs.readFileSync(path.join(__dirname, './private_key.pem'));
     let createdTime = Math.floor(Date.now() / 1000);
     let exp = createdTime + 60*60*24;
     let token = jwt.sign({data, exp}, cert, {algorithm: 'RS256'});
@@ -16,7 +16,7 @@ const jwtToken = {
   //验证token
   verifyToken(token) {
     token = token.toString().split(' ')[1];
-    let cert = fs.readFileSync(path.join(__dirname, './ras/public_key.pem')) || {};
+    let cert = fs.readFileSync(path.join(__dirname, './public_key.pem')) || {};
     let res;
     try{
       let result = jwt.verify(token, cert) || {};

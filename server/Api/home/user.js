@@ -41,7 +41,7 @@ userRouter.post('/api/users', async (req, res) => {
 })
 //删除用户数据
 userRouter.delete('/api/users/:id', async (req, res) => {
-  const deleteUser = await userCollection.findByIdAndDelete(req.params.id, {passwoed: 0});
+  const deleteUser = await userCollection.findByIdAndDelete(req.params.id, {password: 0});
   if (deleteUser) {
     res.send({ deleteUser, meta: { msg: '删除用户成功', status: 201 } });
   } else {
@@ -62,6 +62,18 @@ userRouter.put('/api/users/:id', async (req, res) => {
   const editUser = await userCollection.findByIdAndUpdate(req.params.id, req.body, {password: 0});
   if(editUser) {
     res.send({editUser, meta: {msg: '修改用户成功', status: 201}});
+  }else {
+    res.send({meta: {msg: '修改用户失败', status: 401}});
+  }
+})
+userRouter.put('/api/users/:id/roles', async (req, res) => {
+  const id = req.params.id;
+  const selectRoleId = req.body.rid;
+  const user = await userCollection.findById(id);
+  user.roleName = selectRoleId;
+  const isSuccess = await userCollection.findByIdAndUpdate(id, user, {password: 0});
+  if(isSuccess) {
+    res.send({isSuccess, meta: {msg: '修改用户成功', status: 201}});
   }else {
     res.send({meta: {msg: '修改用户失败', status: 401}});
   }

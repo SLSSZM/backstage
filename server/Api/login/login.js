@@ -2,7 +2,7 @@ const express = require('express');
 const userCollection = require('../../mongodb/model/user');
 const loginRouter = express.Router();
 const bcrypt = require('bcryptjs');
-const jwtToken = require('../../jwt');
+const jwtToken = require('../../ras/jwt');
 
 loginRouter.post('/api/login', async (req, res) => {
   const {username, password} = req.body;

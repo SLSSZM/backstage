@@ -1,9 +1,13 @@
 const express = require('express');
+const app = express();
+//tools
+const jwtToken = require('./ras/jwt');
+//api
 const login = require('./Api/login/login');
 const menu = require('./Api/home/menu');
-const app = express();
 const userList = require('./Api/home/user');
-const jwtToken = require('./jwt');
+const rights = require('./Api/power/rights');
+const roles = require('./Api/power/roles');
 //跨域
 app.use(require('cors')());
 app.use(express.json());
@@ -24,5 +28,7 @@ app.use((req, res, next) => {
 app.use(login);
 app.use(menu);
 app.use(userList);
+app.use(rights);
+app.use(roles);
 
 app.listen(3000, () => console.log("Server start"));
