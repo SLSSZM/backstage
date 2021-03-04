@@ -8,6 +8,7 @@ const menu = require('./Api/home/menu');
 const userList = require('./Api/home/user');
 const rights = require('./Api/power/rights');
 const roles = require('./Api/power/roles');
+const categories = require('./Api/categories/categories');
 //跨域
 app.use(require('cors')());
 app.use(express.json());
@@ -30,5 +31,6 @@ app.use(menu);
 app.use(userList);
 app.use(rights);
 app.use(roles);
+app.use(categories);
 
 app.listen(3000, () => console.log("Server start"));

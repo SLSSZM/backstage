@@ -17,6 +17,7 @@ Vue.prototype.$http.interceptors.request.use(config => {
   return config;
 })
 
+
 new Vue({
   router,
   render: h => h(App)
