@@ -8,7 +8,7 @@ const menu = require('./Api/home/menu');
 const userList = require('./Api/home/user');
 const rights = require('./Api/power/rights');
 const roles = require('./Api/power/roles');
-const categories = require('./Api/categories/categories');
+const categories = require('./Api/goods/categories/categories');
 //跨域
 app.use(require('cors')());
 app.use(express.json());

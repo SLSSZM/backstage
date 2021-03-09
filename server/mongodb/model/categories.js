@@ -1,5 +1,4 @@
 const mongoose = require('../index')
-const counters = require('./counters');
 
 const Categoies = mongoose.model('Categoies', new mongoose.Schema({
   cat_deleted: {
