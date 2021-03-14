@@ -26,3 +26,11 @@ html, body, #app{
 .el-cascader-menu {
   height: 180px;
 }
+
+.el-steps {
+  margin: 15px;
+}
+
+.el-step__title {
+  font-size: 13px;
+}
