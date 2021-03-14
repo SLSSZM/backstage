@@ -12,7 +12,7 @@ const Categoies = mongoose.model('Categoies', new mongoose.Schema({
     type: Number
   },
   children: {
-    type: []
+    type: Array
   },
   cat_id: {
     type: Number,

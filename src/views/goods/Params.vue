@@ -352,4 +352,8 @@ export default {
   .input-new-tag {
     width: 120px;
   }
+
+  .el-button {
+    margin: 10px !important;
+  }
 </style>

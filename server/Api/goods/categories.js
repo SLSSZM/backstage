@@ -1,25 +1,30 @@
 const express = require('express');
 const categoriesRouter = express.Router();
-const categoriesCollection = require('../../../mongodb/model/categories');
-const counter = require('../../../mongodb/model/counters');
-const cateParamsCollection = require('../../../mongodb/model/cateParams');
+const categoriesCollection = require('../../mongodb/model/categories');
+const counter = require('../../mongodb/model/counters');
+const cateParamsCollection = require('../../mongodb/model/cateParams');
 
 //获取商品分类
 categoriesRouter.get('/api/categories', async (req, res) => {
   req.query ? req.query : {};
   //查找商品分类所有参数
-  const cateList = await categoriesCollection.find({});
+  let cateList = await categoriesCollection.find({});
   let { type, pagenum, pagesize } = req.query;
   //对type进行判断
   //1为获取一级分类
   //2为获取一二级分类
   //其余获取所有分类
   if (+type === 1) {
-    cateList.forEach(item => delete item.children);
+    cateList.forEach(item => item.children = undefined);
   } else if (+type === 2) {
     cateList.forEach(item => {
-      item.children.forEach(item2 => delete item2.children);
+      item.children.forEach(item2 => item2.children = undefined);
     });
+  }
+  for (let i = 0; i < cateList.length; i++) {
+    if (cateList[i].children.length === 0) {
+      cateList[i].children = undefined
+    }
   }
   //所有数据
   const total = cateList.length;
@@ -27,8 +32,10 @@ categoriesRouter.get('/api/categories', async (req, res) => {
   let result = [];
   //如果有当前页数则返回所求的数据，如果没有则返回所有数据
   if (pagenum && pagesize) {
-    for (let i = start; i < total; i++) {
-      result.push(cateList[i]);
+    for (let i = start; i < start + (+pagesize); i++) {
+      if (cateList[i]) {
+        result.push(cateList[i]);
+      }
     }
   } else {
     result = cateList.slice();
@@ -167,8 +174,8 @@ categoriesRouter.delete('/api/categories/:id/level/:level/pid/:pid', async (req,
 })
 //获取商品分类参数
 categoriesRouter.get('/api/categories/:id/attributes', async (req, res) => {
-  const sel = req.query.sel;
   const id = req.params.id;
+  const sel = req.query.sel;
   const data = await cateParamsCollection.find({ cat_id: id, attr_sel: sel });
   if (!data) {
     return res.send({ meta: { status: 403, msg: '获取参数数据失败' } });
