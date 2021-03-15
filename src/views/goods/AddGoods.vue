@@ -253,7 +253,7 @@ export default {
 }
 </script>
 
-<style scope>
+<style scoped>
   .el-checkbox {
     margin: 5px 10px !important;
   }

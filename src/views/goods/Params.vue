@@ -340,7 +340,7 @@ export default {
 };
 </script>
 
-<style scope>
+<style scoped>
   .cat_opt {
     margin: 15px 0;
   }
