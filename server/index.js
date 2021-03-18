@@ -13,6 +13,7 @@ const categories = require('./Api/goods/categories');
 const goods = require('./Api/goods/goods');
 const upload = require('./Api/goods/upload');
 const order = require('./Api/order/order');
+const report = require('./Api/report/report');
 
 //跨域
 app.use(require('cors')());
@@ -41,5 +42,6 @@ app.use(categories);
 app.use(goods);
 app.use(upload);
 app.use(order);
+app.use(report);
 
 app.listen(3000, () => console.log("Server start"));
