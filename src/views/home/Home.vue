@@ -2,7 +2,7 @@
   <el-container class="home-container">
     <!-- 头部 -->
     <el-header>
-      <div>PC后台管理</div>
+      <div>电商后台管理</div>
       <el-button icon="el-icon-delete" plain @click="loginOut">退出登录</el-button>
     </el-header>
     <el-container>
@@ -25,7 +25,7 @@ export default {
   },
   methods: {
     //退出登录
-    loginOut() {
+    loginOut () {
       window.sessionStorage.clear();
       this.$router.push("./login");
     }
@@ -34,16 +34,16 @@ export default {
 </script>
 
 <style scoped>
-.home-container {
-  /* padding: 30px; */
-  height: 100%;
-}
-.el-header {
-  background-color: #b9c7d4;
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
-  font-size: 30px;
-  color: #fff;
-}
+  .home-container {
+    /* padding: 30px; */
+    height: 100%;
+  }
+  .el-header {
+    background-color: #b9c7d4;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    font-size: 30px;
+    color: #fff;
+  }
 </style>

@@ -2,11 +2,8 @@
   <el-aside :width="isCollapse ? '64px' : '200px'">
     <!-- 折叠按钮 -->
     <div class="toggle-button" @click="toggleCollapse">|||</div>
-    <el-menu :unique-opened="true" 
-    :collapse="isCollapse" 
-    :collapse-transition="false"
-    :router="true"
-    :default-active="$route.path">
+    <el-menu :unique-opened="true" :collapse="isCollapse" :collapse-transition="false" :router="true"
+      :default-active="$route.path">
       <!-- 一级菜单 -->
       <el-submenu :index="item.id + ''" v-for="item in menuList" :key="item.id">
         <template slot="title">
@@ -14,10 +11,7 @@
           <span>{{ item.authname }}</span>
         </template>
         <!-- 二级菜单 -->
-        <el-menu-item-group
-          v-for="children in item.children"
-          :key="children.id"
-          @click="activeClick(children.path)">
+        <el-menu-item-group v-for="children in item.children" :key="children.id" @click="activeClick(children.path)">
           <el-menu-item :index="'/' + children.path">
             <i class="el-icon-menu"></i>
             <span>{{ children.authname }}</span>
@@ -31,7 +25,7 @@
 <script>
 export default {
   name: "Aside",
-  data() {
+  data () {
     return {
       //菜单列表
       menuList: [],
@@ -49,17 +43,17 @@ export default {
   },
   methods: {
     //获取菜单列表
-    async getMenuList() {
+    async getMenuList () {
       const { data: res } = await this.$http.get("menu");
       if (res.meta.status !== 200) return this.$message.error(res.meta.msg);
       this.menuList = res.data;
     },
     //是否折叠菜单
-    toggleCollapse() {
+    toggleCollapse () {
       this.isCollapse = !this.isCollapse;
     }
   },
-  created() {
+  created () {
     //在创建前获取菜单列表
     this.getMenuList();
   },
@@ -67,13 +61,13 @@ export default {
 </script>
 
 <style scoped>
-.toggle-button {
-  color: #fff;
-  height: 24px;
-  text-align: center;
-  background-color: #dbe4ec;
-  cursor: pointer;
-  letter-spacing: 0.2em;
-  vertical-align: middle;
-}
+  .toggle-button {
+    color: #fff;
+    height: 24px;
+    text-align: center;
+    background-color: #dbe4ec;
+    cursor: pointer;
+    letter-spacing: 0.2em;
+    vertical-align: middle;
+  }
 </style>

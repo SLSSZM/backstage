@@ -78,9 +78,9 @@
 <script>
 //导入富文本编辑器和对应的样式
 import { quillEditor } from 'vue-quill-editor';
-import 'quill/dist/quill.core.css';
-import 'quill/dist/quill.snow.css';
-import 'quill/dist/quill.bubble.css';
+// import 'quill/dist/quill.core.css';
+// import 'quill/dist/quill.snow.css';
+// import 'quill/dist/quill.bubble.css';
 //导入lodash
 import _ from 'lodash';
 
@@ -259,9 +259,6 @@ export default {
   }
   .priviewImg {
     width: 100%;
-  }
-  .ql-editor {
-    min-height: 200px;
   }
   .el-button {
     margin: 10px 0 !important;

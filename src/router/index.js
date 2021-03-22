@@ -1,17 +1,17 @@
 import Vue from 'vue'
 import VueRouter from 'vue-router'
-import Login from '../views/login/Login.vue'
-import Home from '../views/home/Home.vue'
-import Welcome from '../components/Welcome.vue'
-import Users from '../views/home/children/Users.vue'
-import Rights from '../views/power/rights/Rights.vue'
-import Roles from '../views/power/roles/Roles.vue'
-import Categories from '../views/goods/Categories.vue'
-import GoodsList from '../views/goods/List.vue'
-import Params from '../views/goods/Params.vue'
-import AddGoods from '../views/goods/AddGoods.vue'
-import Order from '../views/order/Order.vue'
-import Report from '../views/report/Report.vue'
+const Login = () => import('../views/login/Login.vue')
+const Home = () => import('../views/home/Home.vue')
+const Welcome = () => import('../components/Welcome.vue')
+const Users = () => import('../views/home/children/Users.vue')
+const Rights = () => import('../views/power/rights/Rights.vue')
+const Roles = () => import('../views/power/roles/Roles.vue')
+const Categories = () => import('../views/goods/Categories.vue')
+const GoodsList = () => import('../views/goods/List.vue')
+const Params = () => import('../views/goods/Params.vue')
+const AddGoods = () => import('../views/goods/AddGoods.vue')
+const Order = () => import('../views/order/Order.vue')
+const Report = () => import('../views/report/Report.vue')
 
 Vue.use(VueRouter)
 
@@ -44,7 +44,8 @@ const routes = [
 ]
 
 const router = new VueRouter({
-  routes
+  routes,
+  mode: 'history'
 })
 
 //配置路由导航守卫
